@@ -94,7 +94,7 @@ Representative BEV comparison results between the baseline and the proposed meth
 - **Red dashed boxes**: Predictions
 - **Blue points**: Point Cloud
 
-The proposed method shows more accurate localization and fewer false detections in representative construction scenes.
+> **Note:** Replace the CenterPoint config path with your local file path if necessary.
 
 ---
 
@@ -103,8 +103,8 @@ The proposed method shows more accurate localization and fewer false detections 
 The point cloud input is reconstructed from depth images in the VCVW-3D virtual construction scene dataset.
 
 <p align="center">
-  <img src="docs/pc_reconstruction_1.png" width="45%">
-  <img src="docs/pc_reconstruction_2.png" width="45%">
+  <img src="docs/pc_scene_2.png" width="45%">
+  <img src="docs/pc_scene_3.png" width="45%">
 </p>
 
 <p align="center">
@@ -114,20 +114,19 @@ These examples show that the reconstructed point clouds preserve the geometric s
 
 ---
 
-## 5. Cross-Framework Extension
+### 5. Cross-Framework Extension
 
-In addition to the PointPillars/Pillar-SALNet line, this project is being extended toward **CenterPoint-based experiments** for cross-framework comparison on VCVW-3DDet.
+In addition to the PointPillars/Pillar-SALNet framework, this project is being extended toward CenterPoint-based experiments for cross-framework comparison.
 
-### Current status
+#### Current Status
 
-| Framework     | Detector      | AP_R40 (%) | Status  |
-|---------------|---------------|------------|---------|
-| Anchor-based  | PointPillars  | 66.70      | Done    |
-| Anchor-based  | Pillar-SALNet | 69.29      | Done    |
-| Center-based  | CenterPoint   | TBD        | Running |
+| Framework     | Detector      | AP_R40 (%) | Status   |
+|--------------|--------------|------------|----------|
+| Anchor-based | PointPillars | 66.70      | Done     |
+| Anchor-based | Pillar-SALNet| 69.29      | Done     |
+| Center-based | CenterPoint  | TBD        | Running  |
 
-This extension is intended to analyze whether the advantages of the proposed dataset design and geometric priors remain effective under a center-based 3D detection framework.
-
+> **Note:** CenterPoint experiments are currently in progress. Final results will be updated upon completion.
 ---
 
 ## 6. Dataset
