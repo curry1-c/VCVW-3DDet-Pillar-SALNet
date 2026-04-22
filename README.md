@@ -151,7 +151,7 @@ This repository does **not** redistribute the original raw dataset.
 conda create -n vcvw3ddet python=3.8 -y
 conda activate vcvw3ddet
 pip install -r requirements.txt
-
+```
 If you are using an OpenPCDet-based environment, please additionally prepare the corresponding CUDA, PyTorch, and spconv versions required by your local setup.
 
 ---
