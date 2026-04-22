@@ -134,14 +134,14 @@ python tools/train.py \
     --workers 0 \
     --fix_random_seed
 
----
+
  ## 🚀 Evaluation
 bash
 python tools/test.py \
     --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000.yaml \
     --ckpt path/to/your_checkpoint.pth
 
----
+
 
 
 ## 📂 Repository Structure
