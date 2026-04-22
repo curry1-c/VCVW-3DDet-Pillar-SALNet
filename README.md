@@ -98,6 +98,10 @@ python tools/train.py \
     --epochs 80 \
     --workers 0 \
     --fix_random_seed
+```
+
+---
+
 ## 🚀 Evaluation
 
 ```bash
