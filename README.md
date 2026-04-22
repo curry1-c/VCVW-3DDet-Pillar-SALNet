@@ -69,17 +69,15 @@ SALA dynamically adjusts the matching threshold according to object size:
 
 ## 🚗 BEV Detection Comparison
 
-Representative BEV comparison results between the baseline detector and the proposed method are shown below.
+Comparison between baseline and our proposed method (ECA + SALA):
 
 ![BEV Comparison](docs/bev_comparison.png)
 
-**Visualization legend**
-- Black boxes: Ground Truth
-- Red dashed boxes: Predictions
-- Blue points: Point Cloud
+- Black boxes: Ground Truth  
+- Red dashed boxes: Predictions  
+- Blue points: Point Cloud  
 
-The proposed method produces more accurate localization and fewer false detections in representative construction scenes.
-
+Our method shows better localization accuracy and fewer false detections.
 ---
 
 ## 🌐 Point Cloud Reconstruction Examples
