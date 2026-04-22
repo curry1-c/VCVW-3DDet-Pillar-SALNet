@@ -145,23 +145,24 @@ python tools/test.py \
 
 
 ## 📂 Repository Structure
-text
+
+```text
 VCVW-3DDet-Pillar-SALNet
 ├── cfgs        # configuration files
 ├── docs        # figures and documentation
 ├── tools       # training and testing scripts
 ├── data        # dataset description and examples
 ├── README.md
+```
 
----
 
 
-## 📌 Notes - Built upon the PointPillars framework - Designed for construction vehicle detection - Supports multi-scale feature fusion - Introduces adaptive supervision strategy ## 📎 Citation
-bibtex
-@article{vcvw_sala2026,
-  title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
-  author={curry1-c},
-  journal={The Visual Computer},
-  year={2026}
-}
----
+
+## 📌 Notes
+
+```text
+- Built upon the PointPillars framework
+- Designed for construction vehicle detection
+- Supports multi-scale feature fusion
+- Introduces adaptive supervision strategy
+```
