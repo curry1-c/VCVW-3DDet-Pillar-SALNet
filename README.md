@@ -250,6 +250,8 @@ pip install -r requirements.txt
 
 If you are using OpenPCDet-based code, please additionally prepare the corresponding CUDA, PyTorch, and spconv versions required by your local environment.
 
+---
+
 ## 🚀 Training
 
 ### Train
@@ -273,6 +275,8 @@ python tools/train.py \
 ```
 Replace the cfg path above with your actual CenterPoint config file if the filename differs in your local project.
 
+---
+
  ## 🚀 Evaluation
  PointPillars / Pillar-SALNet
 ```bash
@@ -286,7 +290,7 @@ python tools/test.py \
     --cfg_file tools/cfgs/vcvw_models/centerpoint_vcvw_5000.yaml \
     --ckpt path/to/your_centerpoint_checkpoint.pth
 ```
-
+---
 ## 📂 Repository Structure
 
 ```text
@@ -297,22 +301,27 @@ VCVW-3DDet-Pillar-SALNet
 ├── data        # dataset description and examples
 ├── README.md
 ```
+---
 
 ## 📌 Notes
 
-·Built upon the PointPillars framework
-·Designed for construction vehicle 3D detection
-·Supports multi-scale feature fusion
-·Introduces adaptive supervision strategy
-·Extended toward CenterPoint-based cross-framework experiments
+- Built upon the PointPillars framework  
+- Designed for construction vehicle 3D detection  
+- Supports multi-scale feature fusion  
+- Introduces adaptive supervision strategy  
+- Extended toward CenterPoint-based cross-framework experiments  
+
+---
 
 ## ⚠️ License & Data Usage
 
-·Dataset belongs to the original VCVW-3D authors
-·This repository does NOT redistribute the original raw dataset
-·Only configurations, processing pipeline, and visualization materials are provided
+- Dataset belongs to the original VCVW-3D authors
+- This repository does NOT redistribute the original raw dataset
+- Only configurations, processing pipeline, and visualization materials are provided
 
 According to the uploaded paper, the repository provides processed-format support and experimental materials rather than redistributing the original source dataset.
+
+---
 
 ## 📎 Citation
 ```bash
