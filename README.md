@@ -131,17 +131,52 @@ In addition to the PointPillars/Pillar-SALNet framework, this project is being e
 
 ## 6. Dataset
 
-The dataset is constructed based on the **VCVW-3D virtual construction scene dataset**.
+
+### Overview
+
+This work is built upon the **VCVW-3D** virtual construction scene dataset. Unlike standard LiDAR-based 3D detection benchmarks, VCVW-3D provides **depth images, camera parameters, and JSON-format 3D annotations** rather than ready-to-train point clouds. In this project, we reconstruct depth-based point clouds and build an OpenPCDet-ready dataset for construction vehicle 3D detection. :contentReference[oaicite:0]{index=0}
+
+### What This Repository Provides
 
 This repository provides:
+- depth-to-point-cloud reconstruction pipeline
+- annotation parsing and alignment
+- OpenPCDet-style data organization
+- training and evaluation configurations
+- visualization examples and a small number of sample outputs
 
-- processed data format description
-- visualization examples
-- experimental configurations
-- training and evaluation pipeline
+The **original VCVW-3D raw dataset is not redistributed** in this repository. Users should obtain it from the official source and reproduce the processed data with the provided scripts. :contentReference[oaicite:1]{index=1}
 
-This repository does **not** redistribute the original raw dataset.
+### Data Processing Pipeline
 
+The dataset is constructed through the following steps:
+1. Depth back-projection to 3D point clouds
+2. Invalid-depth filtering and normalization
+3. Annotation parsing from JSON files
+4. Coordinate alignment and box correction
+5. Export to OpenPCDet format
+
+Key preprocessing settings:
+- `POINT_CLOUD_RANGE = [0, -70, -10, 70.4, 70, 10]`
+- `VOXEL_SIZE = [0.2, 0.2, 20]`
+- `max_points = 200000` :contentReference[oaicite:2]{index=2}
+
+### Data Format
+
+Each processed sample includes:
+- point cloud file: `.bin`
+- 3D annotations: `(x, y, z, l, w, h, yaw)`
+- metadata files: `infos_train.pkl`, `infos_val.pkl`
+
+The train/val split is generated with a fixed random seed using an 8:2 ratio for reproducibility. :contentReference[oaicite:3]{index=3}
+
+### Dataset Characteristics
+
+The final dataset contains **9 construction vehicle categories** with clear **multi-scale** and **long-tail** characteristics. These class-wise geometric differences motivate the use of **size priors** and **SALA** in our detection framework. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}
+
+### Note
+
+This repository focuses on the **data construction pipeline**, **processed format**, and **reproducible experiments**. It does not claim ownership of the original VCVW-3D data.
 ---
 
 ## 7. Installation
