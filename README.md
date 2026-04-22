@@ -95,8 +95,6 @@ The point cloud data is reconstructed from depth images in the VCVW-3D virtual c
 ### Example 3
 ![Point Cloud Example 3](docs/pc_scene_3.png)
 
-### Example 4
-![Point Cloud Example 4](docs/pc_scene_4.png)
 
 These examples show that the reconstructed point clouds preserve the geometric structure of construction vehicles and surrounding environments, providing reliable input for 3D object detection.
 
@@ -136,7 +134,8 @@ python tools/train.py \
     --workers 0 \
     --fix_random_seed
 
---- ## 🚀 Evaluation
+---
+ ## 🚀 Evaluation
 bash
 python tools/test.py \
     --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000.yaml \
