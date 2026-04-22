@@ -100,14 +100,16 @@ The proposed method shows more accurate localization and fewer false detections 
 
 ### 4.3 Point Cloud Reconstruction Examples
 
-The point cloud input is reconstructed from depth images in the **VCVW-3D virtual construction scene dataset**.
+The point cloud input is reconstructed from depth images in the VCVW-3D virtual construction scene dataset.
 
-#### Example 1
-![Point Cloud Example 1](docs/pc_scene_1.png)
+<p align="center">
+  <img src="docs/pc_reconstruction_1.png" width="45%">
+  <img src="docs/pc_reconstruction_2.png" width="45%">
+</p>
 
-#### Example 2
-![Point Cloud Example 2](docs/pc_scene_2.png)
-
+<p align="center">
+  <em>Figure: Representative reconstructed point cloud samples in construction scenarios</em>
+</p>
 These examples show that the reconstructed point clouds preserve the geometric structure of construction vehicles and surrounding environments, providing reliable input for downstream 3D object detection.
 
 ---
