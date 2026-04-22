@@ -1,3 +1,5 @@
+# Modified for SALA (Size-Aware Label Assignment)
+# Paper: Pillar-SALNet
 import numpy as np
 import torch
 
