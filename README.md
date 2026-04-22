@@ -1,67 +1,95 @@
 # VCVW-3DDet-Pillar-SALNet
 
-This repository provides the official implementation of the paper:
+🚧 **3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet**
 
-**"VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet"**
+---
 
-It includes the model design, experimental configurations, and visualization results.
+## 📖 Introduction
+
+This repository provides the official implementation of our work:
+
+> **VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet**
+
+We propose a novel **Pillar-SALNet framework** to improve 3D object detection performance in construction scenarios by leveraging:
+
+- Category-aware size priors
+- Size-Aware Label Assignment (SALA)
+- Lightweight channel attention (ECA)
 
 ---
 
 ## 🔥 Method Overview
 
-This work proposes a Pillar-SALNet framework built upon the PointPillars architecture.  
-It integrates category size priors, size-aware label assignment, and lightweight channel attention to improve geometric alignment and feature representation for construction vehicle detection.
-
 ![Pipeline](docs/pipeline.png)
+
+The framework is built upon **PointPillars** and introduces:
+
+- 📐 Geometry-aware anchor initialization  
+- 🎯 Adaptive label assignment (SALA)  
+- ⚡ Efficient feature enhancement (ECA)  
 
 ---
 
 ## ⚙️ ECA Module
 
-The Efficient Channel Attention (ECA) module is introduced at the multi-scale BEV feature fusion stage.  
-It captures local cross-channel interactions via a lightweight 1D convolution without dimensionality reduction, improving feature discriminability with minimal computational cost.
-
 ![ECA](docs/eca_module.png)
+
+The Efficient Channel Attention (ECA) module enhances feature representation by:
+
+- Capturing cross-channel interaction
+- Avoiding dimensionality reduction
+- Maintaining computational efficiency
 
 ---
 
 ## 📐 SALA Strategy
 
-The Size-Aware Label Assignment (SALA) strategy dynamically adjusts the matching threshold according to category-specific geometric priors.  
-This mechanism enhances supervision quality, especially for objects with large intra-class scale variations.
-
 ![SALA](docs/sala_strategy.png)
+
+SALA dynamically adjusts the matching threshold according to object size:
+
+- Improves supervision quality  
+- Handles large intra-class scale variation  
+- Reduces false negatives  
+
+---
+
+## 📊 Experimental Results
+
+| Method | AP_R40 (%) | Params (M) | FPS |
+|------|--------|--------|-----|
+| Baseline | 66.70 | 4.93 | 26.67 |
+| ECA | 67.88 | 4.93 | 28.76 |
+| SALA | 67.34 | 4.93 | 26.67 |
+| **ECA + SALA** | **69.29** | 4.93 | 28.76 |
 
 ---
 
 ## 📊 Dataset
 
-The dataset used in this work is constructed based on the **VCVW-3D virtual construction scene dataset**.
+The dataset is constructed based on the **VCVW-3D virtual construction scene dataset**.
 
-- We do **NOT** distribute the original dataset in this repository.
-- This repository only provides:
-  - data processing description
-  - dataset format
+- ❗ We do NOT distribute the original dataset
+- This repo provides:
+  - data format
+  - processing pipeline
   - example usage
 
-Users should obtain the dataset from its official source and follow its license.
+👉 Please obtain the dataset from official sources.
 
 ---
 
 ## ⚠️ License & Data Usage
 
-The dataset used in this work is derived from the VCVW-3D dataset.  
-All rights belong to the original authors.
-
-This repository only provides processed data format and experimental configuration.  
-**It does NOT redistribute the original dataset.**
+- Dataset belongs to original VCVW-3D authors  
+- This repo **does NOT redistribute data**  
+- Only configs and processing scripts are provided  
 
 ---
 
 ## 🚀 Training
 
-Example training command:
+### Train
 
 ```bash
 python tools/train.py \
@@ -70,41 +98,10 @@ python tools/train.py \
     --epochs 80 \
     --workers 0 \
     --fix_random_seed
-
-Example evaluation command:
+## 🚀 Evaluation
 
 ```bash
 python tools/test.py \
     --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000.yaml \
     --ckpt path/to/your_checkpoint.pth
----
-
-## 📂 Repository Structure
-
-```text
-VCVW-3DDet-Pillar-SALNet
-├── cfgs        # configuration files
-├── docs        # figures and documentation
-├── tools       # training and testing scripts
-├── data        # dataset description and examples
-├── README.md
-
-
-## 📌 Notes
-
-- Built on the PointPillars framework
-- Designed for construction vehicle detection from depth-reconstructed point clouds
-- Supports multi-scale feature fusion and adaptive supervision
-
-
-## 📎 Citation
-
-If you find this work useful, please consider citing:
-
-```bibtex
-@article{vcvw_sala2026,
-  title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
-  author={Zhang Xinzhi},
-  journal={The Visual Computer},
-  year={2026}
-}
+```
