@@ -140,6 +140,10 @@ bash
 python tools/test.py \
     --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000.yaml \
     --ckpt path/to/your_checkpoint.pth
+
+---
+
+
 ## 📂 Repository Structure
 text
 VCVW-3DDet-Pillar-SALNet
@@ -148,6 +152,10 @@ VCVW-3DDet-Pillar-SALNet
 ├── tools       # training and testing scripts
 ├── data        # dataset description and examples
 ├── README.md
+
+---
+
+
 ## 📌 Notes - Built upon the PointPillars framework - Designed for construction vehicle detection - Supports multi-scale feature fusion - Introduces adaptive supervision strategy ## 📎 Citation
 bibtex
 @article{vcvw_sala2026,
@@ -156,3 +164,4 @@ bibtex
   journal={The Visual Computer},
   year={2026}
 }
+---
