@@ -69,15 +69,16 @@ SALA dynamically adjusts the matching threshold according to object size:
 
 ## 🚗 BEV Detection Comparison
 
-Comparison between baseline and our proposed method (ECA + SALA):
+Comparison between the baseline and our proposed method (ECA + SALA):
 
 ![BEV Comparison](docs/bev_comparison.png)
 
-- Black boxes: Ground Truth  
-- Red dashed boxes: Predictions  
-- Blue points: Point Cloud  
+- Black boxes: Ground Truth
+- Red dashed boxes: Predictions
+- Blue points: Point Cloud
 
 Our method shows better localization accuracy and fewer false detections.
+
 ---
 
 ## 🌐 Point Cloud Reconstruction Examples
@@ -89,10 +90,6 @@ The point cloud data is reconstructed from depth images in the VCVW-3D virtual c
 
 ### Example 2
 ![Point Cloud Example 2](docs/pc_scene_2.png)
-
-### Example 3
-![Point Cloud Example 3](docs/pc_scene_3.png)
-
 
 These examples show that the reconstructed point clouds preserve the geometric structure of construction vehicles and surrounding environments, providing reliable input for 3D object detection.
 
