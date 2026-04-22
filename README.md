@@ -155,7 +155,7 @@ VCVW-3DDet-Pillar-SALNet
 
 ## 📌 Notes
 
-```text
+```
 - Built upon the PointPillars framework
 - Designed for construction vehicle detection
 - Supports multi-scale feature fusion
