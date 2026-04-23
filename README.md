@@ -13,6 +13,7 @@ It is **not a standalone 3D detection framework**.
 
 Please install and use it together with OpenPCDet:
 https://github.com/open-mmlab/OpenPCDet
+
 ---
 
 ## 1. Overview
@@ -102,7 +103,7 @@ SALA dynamically adjusts the assignment thresholds according to class-specific g
 | **ECA + SALA (dimweight)** | **69.29** | **4.932** | **28.76** |
 
 **Observation.**  
-The proposed joint model achieves the best overall performance while preserving real-time efficiency. Compared with the baseline, the final model improves AP_R40 by **+2.59** without increasing parameter size.
+The proposed joint model achieves the best overall performance in our experiments. Compared with the baseline, the final model improves AP_R40 by **+2.59** without increasing parameter size. The reported FPS values were measured under the same local experimental setting and may vary with hardware, software environment, runtime warm-up, and implementation details.
 
 ### 4.2 BEV Detection Comparison
 
@@ -177,6 +178,7 @@ This section is included to present the broader research direction of the projec
 This work is based on the **VCVW-3D** virtual construction scene dataset. Unlike standard LiDAR-based 3D detection benchmarks, VCVW-3D provides **depth images, camera parameters, and JSON-format 3D annotations** instead of ready-to-train point clouds. In this project, we reconstruct depth-based point clouds and build an OpenPCDet-ready dataset for construction vehicle 3D detection.
 
 ### What This Repository Provides
+
 The dataset is not included in this repository due to size and licensing restrictions. Please prepare the dataset in OpenPCDet format according to the provided pipeline.
 
 This repository provides:
@@ -236,12 +238,13 @@ Please install OpenPCDet first:
 git clone https://github.com/open-mmlab/OpenPCDet.git
 cd OpenPCDet
 python setup.py develop
+
 ```
 Then use this repository for configs and modified modules.
 
 PyTorch, CUDA, and spconv should be installed according to the OpenPCDet environment requirements.
+
 ---
-Note: Some dependencies (e.g., PyTorch, CUDA, and spconv) should follow the official OpenPCDet installation instructions.
 
 ## 8. Installation
 
