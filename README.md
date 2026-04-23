@@ -126,7 +126,7 @@ These examples show that the reconstructed point clouds preserve the geometric s
 
 ## 5. Cross-Framework Extension
 
-In addition to the PointPillars / Pillar-SALNet framework, this project is being extended toward **CenterPoint-based experiments** for cross-framework comparison.
+To evaluate the generality of the proposed ideas, this project is being extended to a CenterPoint-based framework for cross-framework comparison.
 
 | Framework | Detector | AP_R40 (%) | Status |
 |----------|----------|------------|--------|
@@ -134,16 +134,14 @@ In addition to the PointPillars / Pillar-SALNet framework, this project is being
 | Anchor-based | Pillar-SALNet | 69.29 | Done |
 | Center-based | CenterPoint | TBD | Running |
 
-**Note.**  
-CenterPoint experiments are currently in progress. Final results will be updated upon completion.
-
+**Note.** CenterPoint experiments are still in progress and will be updated when final results are available.
 ---
 
 ## 6. Dataset
 
 ### Overview
 
-This work is built upon the **VCVW-3D** virtual construction scene dataset. Unlike standard LiDAR-based 3D detection benchmarks, VCVW-3D provides **depth images, camera parameters, and JSON-format 3D annotations** rather than ready-to-train point clouds. In this project, we reconstruct depth-based point clouds and build an OpenPCDet-ready dataset for construction vehicle 3D detection.
+This work is based on the **VCVW-3D** virtual construction scene dataset. Unlike standard LiDAR-based 3D detection benchmarks, VCVW-3D provides **depth images, camera parameters, and JSON-format 3D annotations** instead of ready-to-train point clouds. In this project, we reconstruct depth-based point clouds and build an OpenPCDet-ready dataset for construction vehicle 3D detection.
 
 ### What This Repository Provides
 
@@ -155,7 +153,7 @@ This repository provides:
 - training and evaluation configurations
 - visualization examples and a small number of sample outputs
 
-The original **VCVW-3D raw dataset is not redistributed** in this repository. Users should obtain it from the official source and reproduce the processed data with the provided scripts.
+The original **VCVW-3D raw dataset is not redistributed** in this repository.
 
 ### Data Processing Pipeline
 
@@ -203,9 +201,9 @@ This repository focuses on the **data construction pipeline**, **processed forma
 conda create -n vcvw3ddet python=3.8 -y
 conda activate vcvw3ddet
 pip install -r requirements.txt
-
-If you are using an OpenPCDet-based environment, please additionally prepare the corresponding CUDA, PyTorch, and spconv versions required by your local setup.
 ```
+If you are using an OpenPCDet-based environment, please additionally prepare the corresponding CUDA, PyTorch, and spconv versions required by your local setup.
+
 
 ---
 
@@ -267,12 +265,10 @@ Replace the CenterPoint config path with your actual local filename if needed.
 
 ## 11. Notes
 
-- Built upon the PointPillars framework and OpenPCDet
+- Built upon PointPillars and OpenPCDet
 - Designed for construction vehicle 3D detection
-- Supports multi-scale feature fusion
-- Introduces adaptive supervision through SALA
+- Supports adaptive supervision through SALA
 - Extended toward CenterPoint-based cross-framework experiments
-
 ---
 
 ## 12. License & Data Usage
