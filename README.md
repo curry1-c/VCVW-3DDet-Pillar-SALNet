@@ -203,6 +203,9 @@ git clone https://github.com/open-mmlab/OpenPCDet.git
 cd OpenPCDet
 python setup.py develop
 ```
+Then use this repository for configs and modified modules.
+
+PyTorch, CUDA, and spconv should be installed according to the OpenPCDet environment requirements.
 ---
 
 ## 8. Installation
@@ -214,6 +217,7 @@ conda create -n vcvw3ddet python=3.8 -y
 conda activate vcvw3ddet
 pip install -r requirements.txt
 ```
+
 If you are using an OpenPCDet-based environment, please additionally prepare the corresponding CUDA, PyTorch, and spconv versions required by your local setup.
 
 
