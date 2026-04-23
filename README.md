@@ -11,9 +11,14 @@ This repository provides modified modules, configurations, and experimental sett
 
 It is **not a standalone 3D detection framework**.
 
-Please install and use it together with OpenPCDet:
-https://github.com/open-mmlab/OpenPCDet
+Please install OpenPCDet first:
 
+```bash
+git clone https://github.com/open-mmlab/OpenPCDet.git
+cd OpenPCDet
+python setup.py develop
+
+```
 ---
 
 ## 1. Overview
