@@ -192,10 +192,22 @@ The final dataset contains **9 construction vehicle categories** with clear **mu
 This repository focuses on the **data construction pipeline**, **processed format**, and **reproducible experiments**. It does not claim ownership of the original VCVW-3D data.
 
 ---
+## 7. Dependency
 
-## 7. Installation
+This project is built upon OpenPCDet.
 
-### 7.1 Environment
+Please install OpenPCDet first:
+
+```bash
+git clone https://github.com/open-mmlab/OpenPCDet.git
+cd OpenPCDet
+python setup.py develop
+```
+---
+
+## 8. Installation
+
+### 8.1 Environment
 
 ```bash
 conda create -n vcvw3ddet python=3.8 -y
@@ -207,9 +219,9 @@ If you are using an OpenPCDet-based environment, please additionally prepare the
 
 ---
 
-## 8. Training
+## 9. Training
 
-### 8.1 PointPillars / Pillar-SALNet
+### 9.1 PointPillars / Pillar-SALNet
 
     python tools/train.py \
         --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000.yaml \
@@ -218,7 +230,7 @@ If you are using an OpenPCDet-based environment, please additionally prepare the
         --workers 0 \
         --fix_random_seed
 
-### 8.2 CenterPoint
+### 9.2 CenterPoint
 
     python tools/train.py \
         --cfg_file tools/cfgs/vcvw_models/centerpoint_vcvw_5000.yaml \
@@ -231,15 +243,15 @@ Replace the CenterPoint config path with your actual local filename if needed.
 
 ---
 
-## 9. Evaluation
+## 10. Evaluation
 
-### 9.1 PointPillars / Pillar-SALNet
+### 10.1 PointPillars / Pillar-SALNet
 
     python tools/test.py \
         --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000.yaml \
         --ckpt path/to/your_checkpoint.pth
 
-### 9.2 CenterPoint
+### 10.2 CenterPoint
 
     python tools/test.py \
         --cfg_file tools/cfgs/vcvw_models/centerpoint_vcvw_5000.yaml \
@@ -247,7 +259,7 @@ Replace the CenterPoint config path with your actual local filename if needed.
 
 ---
 
-## 10. Repository Structure
+## 11. Repository Structure
 
     VCVW-3DDet-Pillar-SALNet
     ├── cfgs/
@@ -263,7 +275,7 @@ Replace the CenterPoint config path with your actual local filename if needed.
 
 ---
 
-## 11. Notes
+## 12. Notes
 
 - Built upon PointPillars and OpenPCDet
 - Designed for construction vehicle 3D detection
@@ -271,7 +283,7 @@ Replace the CenterPoint config path with your actual local filename if needed.
 - Extended toward CenterPoint-based cross-framework experiments
 ---
 
-## 12. License & Data Usage
+## 13. License & Data Usage
 
 - The original dataset belongs to the VCVW-3D authors
 - This repository does **not** redistribute the original raw dataset
@@ -281,7 +293,7 @@ Please obtain the original dataset from its official source and follow the corre
 
 ---
 
-## 13. Citation
+## 14. Citation
 
     @article{vcvw_sala2026,
       title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
