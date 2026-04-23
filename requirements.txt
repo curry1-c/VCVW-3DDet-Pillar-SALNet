@@ -1,0 +1,13 @@
+numpy>=1.20
+scipy
+pyyaml
+easydict
+tqdm
+tensorboardX
+scikit-image
+numba
+SharedArray
+opencv-python
+matplotlib
+pandas
+Pillow
