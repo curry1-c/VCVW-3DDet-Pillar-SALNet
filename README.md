@@ -5,6 +5,15 @@
 This repository contains the implementation and experimental materials for **VCVW-3DDet-Pillar-SALNet**, a 3D detection framework for construction vehicles based on depth-reconstructed point clouds.
 
 ---
+## ⚠️ Important Note
+
+This repository provides modified modules, configurations, and experimental settings based on OpenPCDet.
+
+It is **not a standalone 3D detection framework**.
+
+Please install and use it together with OpenPCDet:
+https://github.com/open-mmlab/OpenPCDet
+---
 
 ## 1. Overview
 
@@ -66,7 +75,7 @@ The ECA module is inserted at the multi-scale BEV fusion output stage to enhance
 ### 3.2 Size-Aware Label Assignment (SALA)
 
 <p align="center">
-  <img src="docs/sala_strategy.pn" width="900"/>
+  <img src="docs/sala_strategy.png" width="900"/>
 </p>
 
 SALA dynamically adjusts the assignment thresholds according to class-specific geometric priors and target size deviation.
@@ -126,7 +135,11 @@ These examples show that the reconstructed point clouds preserve the geometric s
 
 ## 5. Cross-Framework Extension
 
-To evaluate the generality of the proposed ideas, this project is being extended to a CenterPoint-based framework for cross-framework comparison.
+To evaluate whether the proposed design is specific to PointPillars or can generalize to other 3D detection paradigms, this project is being further extended to a **CenterPoint-based framework** for cross-framework comparison.
+
+The current study focuses on the PointPillars / Pillar-SALNet line, where the proposed improvements are implemented and validated in a complete anchor-based BEV detection pipeline. In parallel, we are conducting additional experiments on a center-based detector to examine the transferability of the key ideas under a different detection formulation.
+
+### Current Status
 
 | Framework | Detector | AP_R40 (%) | Status |
 |----------|----------|------------|--------|
@@ -134,7 +147,27 @@ To evaluate the generality of the proposed ideas, this project is being extended
 | Anchor-based | Pillar-SALNet | 69.29 | Done |
 | Center-based | CenterPoint | TBD | Running |
 
-**Note.** CenterPoint experiments are still in progress and will be updated when final results are available.
+### Description
+
+The goal of this extension is not only to compare detector performance, but also to investigate whether the design principles behind **size-aware supervision** and **lightweight BEV feature enhancement** remain effective when transferred from an anchor-based pipeline to a center-based one.
+
+At the current stage, the CenterPoint branch should be regarded as an **ongoing extension** rather than a finalized benchmark result. Final quantitative results will be released after the corresponding experiments are fully completed and verified.
+
+### Important Note
+
+For **PointPillars**, the vertical voxel size is intentionally set to compress the height dimension into pillars, which is consistent with the pillar-based representation.  
+For **CenterPoint**, experiments are conducted with an **independent configuration**, and its voxelization and detection settings should be interpreted separately rather than as a direct reuse of the PointPillars configuration.
+
+### Planned Update
+
+The CenterPoint extension will be updated with:
+
+- finalized AP_R40 results
+- corresponding configuration files
+- reproducible training and evaluation commands
+- cross-framework comparison analysis
+
+This section is included to present the broader research direction of the project and will be updated as the CenterPoint branch becomes fully available.
 ---
 
 ## 6. Dataset
@@ -144,6 +177,7 @@ To evaluate the generality of the proposed ideas, this project is being extended
 This work is based on the **VCVW-3D** virtual construction scene dataset. Unlike standard LiDAR-based 3D detection benchmarks, VCVW-3D provides **depth images, camera parameters, and JSON-format 3D annotations** instead of ready-to-train point clouds. In this project, we reconstruct depth-based point clouds and build an OpenPCDet-ready dataset for construction vehicle 3D detection.
 
 ### What This Repository Provides
+The dataset is not included in this repository due to size and licensing restrictions. Please prepare the dataset in OpenPCDet format according to the provided pipeline.
 
 This repository provides:
 
@@ -207,6 +241,7 @@ Then use this repository for configs and modified modules.
 
 PyTorch, CUDA, and spconv should be installed according to the OpenPCDet environment requirements.
 ---
+Note: Some dependencies (e.g., PyTorch, CUDA, and spconv) should follow the official OpenPCDet installation instructions.
 
 ## 8. Installation
 
@@ -299,11 +334,11 @@ Please obtain the original dataset from its official source and follow the corre
 
 ## 14. Citation
 
-    @article{vcvw_sala2026,
-      title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
-      author={curry1-c},
-      journal={The Visual Computer},
-      year={2026}
-    }
+If you find this work useful, please consider citing it as:
 
-If this work is helpful for your research, please consider citing it.
+```bibtex
+@misc{vcvw_sala,
+  title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
+  author={Your Name and Coauthors},
+  note={Under review}
+}
