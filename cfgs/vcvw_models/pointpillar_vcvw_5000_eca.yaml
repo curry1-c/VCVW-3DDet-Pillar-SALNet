@@ -47,7 +47,6 @@ MODEL:
     - 128
     USE_ECA: true
     ECA_KERNEL_SIZE: 3
-    ECA_LOCATION: final
   DENSE_HEAD:
     NAME: AnchorHeadSingle
     CLASS_AGNOSTIC: false

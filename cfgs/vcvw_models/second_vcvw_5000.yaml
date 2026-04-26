@@ -11,43 +11,55 @@ CLASS_NAMES: &id001
 DATA_CONFIG:
   _BASE_CONFIG_: tools/cfgs/dataset_configs/vcvw_extend5000_like1000_9cls.yaml
   CLASS_NAMES: *id001
+  POINT_CLOUD_RANGE:
+  - 0.0
+  - -70.4
+  - -10.0
+  - 70.4
+  - 70.4
+  - 10.0
+  DATA_PROCESSOR:
+  - NAME: mask_points_and_boxes_outside_range
+    REMOVE_OUTSIDE_BOXES: true
+  - NAME: shuffle_points
+    SHUFFLE_ENABLED:
+      train: true
+      test: false
+  - NAME: transform_points_to_voxels
+    VOXEL_SIZE:
+    - 0.2
+    - 0.2
+    - 0.2
+    MAX_POINTS_PER_VOXEL: 20
+    MAX_NUMBER_OF_VOXELS:
+      train: 20000
+      test: 40000
 MODEL:
-  NAME: PointPillar
+  NAME: SECONDNet
   VFE:
-    NAME: PillarVFE
-    USE_NORM: true
-    WITH_DISTANCE: false
-    USE_ABSLOTE_XYZ: true
-    NUM_FILTERS:
-    - 64
+    NAME: MeanVFE
+  BACKBONE_3D:
+    NAME: VoxelBackBone8x
   MAP_TO_BEV:
-    NAME: PointPillarScatter
-    NUM_BEV_FEATURES: 64
+    NAME: HeightCompression
+    NUM_BEV_FEATURES: 640
   BACKBONE_2D:
-    USE_ECA: true
-    ECA_KERNEL_SIZE: 3
-    ECA_LOCATION: final
     NAME: BaseBEVBackbone
     LAYER_NUMS:
-    - 3
     - 5
     - 5
     LAYER_STRIDES:
-    - 2
-    - 2
+    - 1
     - 2
     NUM_FILTERS:
-    - 64
     - 128
     - 256
     UPSAMPLE_STRIDES:
     - 1
     - 2
-    - 4
     NUM_UPSAMPLE_FILTERS:
-    - 128
-    - 128
-    - 128
+    - 256
+    - 256
   DENSE_HEAD:
     NAME: AnchorHeadSingle
     CLASS_AGNOSTIC: false
@@ -57,141 +69,132 @@ MODEL:
     NUM_DIR_BINS: 2
     ANCHOR_GENERATOR_CONFIG:
     - class_name: Forklift
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 4.45
-        - 1.85
-        - 2.76
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: DumpTruck
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 9.18
-        - 3.64
-        - 3.81
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: Bulldozer
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 7.29
-        - 4.16
-        - 3.79
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: ConcreteMixer
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 9.29
-        - 2.95
-        - 3.81
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: Loader
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 8.20
-        - 3.20
-        - 3.77
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: Excavator
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 9.96
-        - 4.08
-        - 5.62
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: RoadRoller
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 6.25
-        - 3.27
-        - 3.77
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: Crane
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 13.33
-        - 4.13
-        - 3.82
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
-
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     - class_name: Grader
-      feature_map_stride: 2
+      feature_map_stride: 8
       anchor_sizes:
-      - - 9.80
-        - 3.41
-        - 3.51
+      - - 8.0
+        - 3.0
+        - 3.5
       anchor_rotations:
       - 0
       - 1.57
       anchor_bottom_heights:
       - -7.0
       align_center: false
-      matched_threshold: 0.50
-      unmatched_threshold: 0.35
+      matched_threshold: 0.35
+      unmatched_threshold: 0.2
     TARGET_ASSIGNER_CONFIG:
-      SALA_ENABLED: true
       NAME: AxisAlignedTargetAssigner
       POS_FRACTION: -1.0
       SAMPLE_SIZE: 512
@@ -218,13 +221,19 @@ MODEL:
         RoadRoller: 0.45
         Crane: 0.45
         Grader: 0.45
-
     LOSS_CONFIG:
       LOSS_WEIGHTS:
         cls_weight: 1.0
         loc_weight: 2.0
         dir_weight: 0.2
-        code_weights: [1, 1, 1, 1, 1, 1, 1]
+        code_weights:
+        - 1
+        - 1
+        - 1
+        - 1
+        - 1
+        - 1
+        - 1
   POST_PROCESSING:
     RECALL_THRESH_LIST:
     - 0.3
@@ -260,5 +269,5 @@ OPTIMIZATION:
   LR_WARMUP: false
   WARMUP_EPOCH: 1
   GRAD_NORM_CLIP: 10
-TAG: pointpillar_vcvw_5000_eca_sala_dimweight
+TAG: pointpillar_vcvw_5000_baseline
 EXP_GROUP_PATH: vcvw_models

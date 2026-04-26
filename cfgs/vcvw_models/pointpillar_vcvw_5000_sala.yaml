@@ -257,5 +257,5 @@ OPTIMIZATION:
   LR_WARMUP: false
   WARMUP_EPOCH: 1
   GRAD_NORM_CLIP: 10
-TAG: pointpillar_vcvw_5000_sala
+TAG: pointpillar_vcvw_5000_sizeprior_sala_dimweight
 EXP_GROUP_PATH: vcvw_models
