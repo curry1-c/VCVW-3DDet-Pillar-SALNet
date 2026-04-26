@@ -111,6 +111,7 @@ SALA dynamically adjusts the assignment thresholds according to class-specific g
 | SALA (dimweight) | 67.34 | 4.932 | 26.67 | 37.501 | 0.575 |
 | **ECA + SALA (dimweight)** | **69.29** | **4.932** | **28.76** | **34.767** | **0.502** |
 | CenterPoint | 81.98 | 5.227 | 2.99 | 334.600 | 3.202 |
+
 Runtime statistics marked as N/A were not re-measured under the unified complexity-measurement protocol.
 
 **Observation.**  
