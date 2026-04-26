@@ -1,12 +1,3 @@
-# =========================================================
-# Modified by:c
-# Paper: Pillar-SALNet (VCVW-3DDet)
-# Based on: OpenPCDet
-#
-# Contribution:
-#   - Size-Aware Label Assignment (SALA)
-#   - Adaptive IoU thresholds based on anchor-object size deviation
-# =========================================================
 import numpy as np
 import torch
 
