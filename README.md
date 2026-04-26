@@ -5,13 +5,17 @@
 This repository contains the implementation and experimental materials for **VCVW-3DDet-Pillar-SALNet**, a 3D detection framework for construction vehicles based on depth-reconstructed point clouds.
 
 ---
+
 ## ⚠️ Important Note
 
 This repository provides modified modules, configurations, and experimental settings based on OpenPCDet.
 
 It is **not a standalone 3D detection framework**.
 
-Please install OpenPCDet first:
+Please install and use it together with OpenPCDet:  
+https://github.com/open-mmlab/OpenPCDet
+
+To prepare the OpenPCDet environment, you may start with:
 
 ```bash
 git clone https://github.com/open-mmlab/OpenPCDet.git
@@ -98,14 +102,16 @@ SALA dynamically adjusts the assignment thresholds according to class-specific g
 
 ### 4.1 Main Quantitative Results
 
-| Method | AP_R40 (%) | Params (M) | FPS |
-|--------|------------|------------|-----|
-| SECOND | 39.34 | - | - |
-| Baseline | 66.70 | 4.932 | 26.67 |
-| EMA | 67.33 | - | - |
-| ECA-final | 67.88 | 4.932 | 28.76 |
-| SALA (dimweight) | 67.34 | 4.932 | 26.67 |
-| **ECA + SALA (dimweight)** | **69.29** | **4.932** | **28.76** |
+| Method | AP_R40 (%) | Params (M) | FPS | Latency (ms) | Memory (GB) |
+|--------|------------|------------|-----|--------------|-------------|
+| SECOND | 39.34 | N/A | N/A | N/A | N/A |
+| Baseline | 66.70 | 4.932 | 26.67 | 37.501 | 0.575 |
+| EMA | 67.33 | N/A | N/A | N/A | N/A |
+| ECA-final | 67.88 | 4.932 | 28.76 | 34.767 | 0.502 |
+| SALA (dimweight) | 67.34 | 4.932 | 26.67 | 37.501 | 0.575 |
+| **ECA + SALA (dimweight)** | **69.29** | **4.932** | **28.76** | **34.767** | **0.502** |
+| CenterPoint | 81.98 | 5.227 | 2.99 | 334.600 | 3.202 |
+Runtime statistics marked as N/A were not re-measured under the unified complexity-measurement protocol.
 
 **Observation.**  
 The proposed joint model achieves the best overall performance in our experiments. Compared with the baseline, the final model improves AP_R40 by **+2.59** without increasing parameter size. The reported FPS values were measured under the same local experimental setting and may vary with hardware, software environment, runtime warm-up, and implementation details.
@@ -147,17 +153,19 @@ The current study focuses on the PointPillars / Pillar-SALNet line, where the pr
 
 ### Current Status
 
-| Framework | Detector | AP_R40 (%) | Status |
-|----------|----------|------------|--------|
-| Anchor-based | PointPillars | 66.70 | Done |
-| Anchor-based | Pillar-SALNet | 69.29 | Done |
-| Center-based | CenterPoint | TBD | Running |
+| Framework     | Detector       | AP_R40 (%) | Status |
+|--------------|----------------|------------|--------|
+| Anchor-based | PointPillars   | 66.70      | Done   |
+| Anchor-based | Pillar-SALNet  | 69.29      | Done   |
+| Center-based | CenterPoint    | 81.98      | Done   |
+
+The CenterPoint result is reported as a cross-framework reference. Since CenterPoint follows a center-based detection paradigm, it is used to complement the PointPillars/Pillar-SALNet comparison rather than as a direct replacement for the proposed anchor-based framework.
 
 ### Description
 
-The goal of this extension is not only to compare detector performance, but also to investigate whether the design principles behind **size-aware supervision** and **lightweight BEV feature enhancement** remain effective when transferred from an anchor-based pipeline to a center-based one.
+The CenterPoint result is included as a cross-framework reference. Since CenterPoint follows a center-based detection paradigm, it is used to complement the PointPillars/Pillar-SALNet comparison rather than as a direct replacement for the proposed anchor-based framework.
 
-At the current stage, the CenterPoint branch should be regarded as an **ongoing extension** rather than a finalized benchmark result. Final quantitative results will be released after the corresponding experiments are fully completed and verified.
+The goal of this extension is to provide an additional reference under a different detection formulation and to help readers understand the behavior of the proposed design beyond the PointPillars-based setting.
 
 ### Important Note
 
@@ -243,7 +251,6 @@ Please install OpenPCDet first:
 git clone https://github.com/open-mmlab/OpenPCDet.git
 cd OpenPCDet
 python setup.py develop
-
 ```
 Then use this repository for configs and modified modules.
 
@@ -313,11 +320,22 @@ Replace the CenterPoint config path with your actual local filename if needed.
     │   └── vcvw_models/                 # baseline / ECA / SALA / final configs
     ├── models/
     │   ├── backbones_2d/                # ECA-enhanced BEV backbone
+    │   ├── backbones_3d/vfe/            # pillar feature encoding
     │   └── dense_heads/
+    │       ├── anchor_head_single.py
+    │       ├── anchor_head_template.py
     │       └── target_assigner/         # SALA target assignment
-    ├── tools/                           # training and testing scripts
-    ├── data/                            # dataset description and examples
+    ├── tools/
+    │   ├── train.py                     # training entry
+    │   ├── test.py                      # evaluation entry
+    │   ├── train_utils/                 # training utilities
+    │   └── cfgs/
+    │       ├── vcvw_models/             # OpenPCDet-style model configs
+    │       └── dataset_configs/         # dataset config
+    ├── data/                            # dataset description
     ├── docs/                            # figures and visual materials
+    ├── requirements.txt
+    ├── LICENSE
     └── README.md
 
 ---
@@ -342,11 +360,11 @@ Please obtain the original dataset from its official source and follow the corre
 
 ## 14. Citation
 
-If you find this work useful, please consider citing it as:
+    @article{vcvw_sala2026,
+      title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
+      author={curry1-c},
+      journal={Under review},
+      year={2026}
+    }
 
-```bibtex
-@misc{vcvw_sala,
-  title={VCVW-3DDet: 3D Detection of Construction Vehicles from Depth-Reconstructed Point Clouds via Pillar-SALNet},
-  author={Your Name and Coauthors},
-  note={Under review}
-}
+If this work is helpful for your research, please consider citing it.
