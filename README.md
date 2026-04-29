@@ -449,17 +449,19 @@ Please note:
 
 ## 15. Code and Data Availability
 
-The code and documentation are publicly available at:
+The code, configurations, data-processing scripts, and documentation are publicly available at:
 
 ```text
 https://github.com/curry1-c/VCVW-3DDet-Pillar-SALNet
 ```
 
-An archived version with DOI will be added after the official release:
+An archived version of this repository with DOI is available at:
 
 ```text
 Zenodo DOI: https://doi.org/10.5281/zenodo.19886473
 ```
+
+Please note that the original VCVW-3D raw dataset is not redistributed in this repository due to size and licensing restrictions. Users should obtain the original dataset from its official source and follow the corresponding license terms.
 
 ---
 
@@ -470,7 +472,7 @@ If this repository is helpful for your research, please consider citing the corr
 ```bibtex
 @article{vcvw3ddet_pillarsalnet2026,
   title={Depth-Reconstructed Point Cloud Understanding and Lightweight 3D Detection for Scene-Level Engineering Vehicles},
-  author={Author Names},
+  author={Xinzhi Zhang},
   journal={The Visual Computer},
   year={2026},
   note={Under review}
