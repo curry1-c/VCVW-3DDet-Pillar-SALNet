@@ -458,7 +458,7 @@ https://github.com/curry1-c/VCVW-3DDet-Pillar-SALNet
 An archived version with DOI will be added after the official release:
 
 ```text
-Zenodo DOI: To be updated
+Zenodo DOI: https://doi.org/10.5281/zenodo.19886473
 ```
 
 ---
