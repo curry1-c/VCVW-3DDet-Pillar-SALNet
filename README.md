@@ -175,11 +175,11 @@ Representative BEV detection results are shown below.
   <img src="docs/bev_comparison.png" width="900"/>
 </p>
 
-Visualization legend:
+**Legend**
 
-- black boxes: ground truth;
-- red dashed boxes: predictions;
-- blue points: point cloud.
+- **Black boxes**: ground truth
+- **Red dashed boxes**: predictions
+- **Blue points**: point cloud
 
 ---
 
