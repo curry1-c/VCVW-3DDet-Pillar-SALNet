@@ -4,11 +4,13 @@ Official implementation for the manuscript:
 
 **Depth-Reconstructed Point Cloud Understanding and Lightweight 3D Detection for Scene-Level Engineering Vehicles**
 
-This repository provides the code, configurations, data-processing scripts, and experimental materials for **VCW-3DDet** and **Pillar-SALNet**, a lightweight 3D detection framework for scene-level engineering vehicles from depth-reconstructed point clouds.
+This repository provides the code, configuration files, data-processing scripts, and reproducibility materials for **VCVW-3DDet** and **Pillar-SALNet**, a lightweight 3D detection framework for scene-level engineering vehicles from depth-reconstructed point clouds.
 
-> This repository is directly related to the manuscript submitted to **The Visual Computer**.  
-> If this work is helpful for your research, please consider citing the corresponding manuscript.
+This repository is directly associated with the manuscript submitted to **The Visual Computer**. It is intended to support transparent and reproducible research.
 
+If you use this code, configuration files, data-processing scripts, or benchmark protocol in your research, please cite the related manuscript and the archived Zenodo release.
+
+**Zenodo DOI:** https://doi.org/10.5281/zenodo.19886473
 ---
 
 ## 1. Important Note
@@ -142,10 +144,10 @@ The following table reports the main 3D detection performance on the 5000-frame 
 | EMA | 67.33 | Lightweight attention reference |
 | ECA-final | 67.88 | BEV feature enhancement |
 | SALA(dimweight) | 67.34 | Size-aware supervision |
-| **ECA + SALA(dimweight)** | **69.29** | **Final Pillar-SALNet setting** |
+| **Pillar-SALNet (ECA + SALA(dimweight))** | **69.29** | **Final setting** |
 | CenterPoint | 81.98 | Center-based cross-framework reference |
 
-Compared with the PointPillars baseline, the final **ECA + SALA(dimweight)** setting improves 3D AP_R40 from **66.70%** to **69.29%**, achieving a gain of **+2.59%**.
+Compared with the PointPillars baseline, the final **ECA + SALA(dimweight)** setting improves 3D AP_R40 from **66.70%** to **69.29%**, yielding an improvement of **+2.59 percentage points**.
 
 CenterPoint is reported as a supplementary cross-framework reference. Since it follows a center-based detection paradigm, it should not be interpreted as a direct replacement for the proposed PointPillars-based Pillar-SALNet framework.
 
@@ -383,12 +385,12 @@ Please check the file paths carefully before overwriting existing OpenPCDet file
 A typical conda environment can be created as follows:
 
 ```bash
-conda create -n vcvw3ddet python=3.8 -y
+conda create -n vcvw3ddet python=3.10 -y
 conda activate vcvw3ddet
 pip install -r requirements.txt
 ```
 
-If you already have a working OpenPCDet environment, please keep the CUDA, PyTorch, and spconv versions consistent with your local setup.
+The experiments reported in the manuscript were conducted with Python 3.10.19, PyTorch 2.9.1+cu128, and CUDA 12.8. Other OpenPCDet-compatible environments may also work, but the reported runtime results may vary with hardware and software versions.
 
 ---
 
@@ -411,7 +413,7 @@ python tools/train.py \
 
 ```bash
 python tools/train.py \
-    --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000_eca_sala.yaml \
+    --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000_eca_sala_dimweight.yaml \
     --batch_size 1 \
     --epochs 80 \
     --workers 0 \
@@ -451,7 +453,7 @@ python tools/test.py \
 
 ```bash
 python tools/test.py \
-    --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000_eca_sala.yaml \
+    --cfg_file tools/cfgs/vcvw_models/pointpillar_vcvw_5000_eca_sala_dimweight.yaml \
     --ckpt path/to/checkpoint_epoch_80.pth
 ```
 
@@ -570,15 +572,15 @@ To facilitate reproducibility without redistributing the licensed raw dataset, t
 
 ## 16. Citation
 
-If this repository is helpful for your research, please consider citing the corresponding manuscript.
+If this repository is useful for your research, please cite the related manuscript and the archived Zenodo release:
 
 ```bibtex
-@article{vcvw3ddet_pillarsalnet2026,
-  title={Depth-Reconstructed Point Cloud Understanding and Lightweight 3D Detection for Scene-Level Engineering Vehicles},
-  author={Xinzhi Zhang},
-  journal={The Visual Computer},
-  year={2026},
-  note={Under review}
+@misc{zhang2026vcvw3ddet,
+  title        = {Depth-Reconstructed Point Cloud Understanding and Lightweight 3D Detection for Scene-Level Engineering Vehicles},
+  author       = {Ye Xu and Xinzhi Zhang},
+  year         = {2026},
+  note         = {Manuscript submitted to The Visual Computer. Code archived at Zenodo},
+  doi          = {10.5281/zenodo.19886473}
 }
 ```
 
