@@ -1,0 +1,22 @@
+{
+  "sample_id": "000001",
+  "point_cloud": {
+    "file": "training/velodyne/000001.bin",
+    "format": "float32",
+    "fields": ["x", "y", "z", "intensity"]
+  },
+  "annotations": [
+    {
+      "name": "Excavator",
+      "box3d_lidar": {
+        "x": 12.35,
+        "y": -8.42,
+        "z": 0.75,
+        "length": 6.20,
+        "width": 2.80,
+        "height": 3.10,
+        "yaw": 1.57
+      }
+    }
+  ]
+}

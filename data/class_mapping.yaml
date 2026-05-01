@@ -1,0 +1,21 @@
+class_names:
+  - Forklift
+  - DumpTruck
+  - Bulldozer
+  - ConcreteMixer
+  - Loader
+  - Excavator
+  - RoadRoller
+  - Crane
+  - Grader
+
+map_class_to_kitti:
+  Forklift: Forklift
+  DumpTruck: DumpTruck
+  Bulldozer: Bulldozer
+  ConcreteMixer: ConcreteMixer
+  Loader: Loader
+  Excavator: Excavator
+  RoadRoller: RoadRoller
+  Crane: Crane
+  Grader: Grader
